@@ -37,20 +37,30 @@ function getUserFriends() {
 	
 	   var friends = response.data;
 	
-	   for (var i=0; i < friends.length && i < 20; i++) {
-		 var friend = friends[i];
-	
-		 markup += '<img src="' + friend.picture + '"> ' + '<a href="#" onClick="getMutualFriends(' +friend.id + ')">' + friend.name + '</a> <br>';
-	 
-	   }
-	
+		friends.sort(compareMutualFriends);
+		
+		for (var i=0; i < friends.length && i < 25; i++) {
+			var friend = friends[i];
+			 markup += '<img src="' + friend.picture + '"> ' + '<a href="#" onClick="getMutualFriends(' + friend.id + ')">' + friend.name + '</a> <br>';	
+		}
+		
+		
 	   document.getElementById('user-friends').innerHTML = markup;
 	 }
 	});
 }
 function getMutualFriends(id) {
 	FB.api('/me/mutualfriends/' + id, function(response) {
-		alert('You have ' + response.data.length + ' mutual friends in common. Cool eh!?');
+		var mutualfriends = response.data.length;
+		alert (mutualfriends);
 	});	
 	
+}
+function compareMutualFriends(a, b) {
+	var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+	if (nameA < nameB) 
+		return -1;
+	if (nameA > nameB)
+		return 1;
+	return 0;
 }
