@@ -1,0 +1,50 @@
+<!DOCTYPE html> 
+<html> 
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta property="og:title" content="Hello world" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Hello World" />
+    <meta property="og:description" content="Hello World!  This is my mobile web sample app." />
+    <meta property="og:image" content="http://www.facebookmobileweb.com/start/img/facebook_icon_large.png"/>
+	<title>Single page template</title> 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.css" />
+    <link href="fbapi.css" rel="stylesheet" type="text/css">
+	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
+	
+</head>
+
+<body> 
+<div id="fb-root"></div>
+<script src="fbapi.js"></script>
+<div data-role="page">
+
+	<div data-role="header">
+		<h1>Facebook API</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+		<div id="login">
+           <p><button onClick="loginUser();">Login</button></p>
+         </div>
+         <div id="logout">
+           <p><button  onClick="FB.logout(); window.location.reload(true);">Logout</button></p>
+         </div>
+      <div id="user-info"></div> 
+     <a href="#" onclick="getUserFriends();">Get friends</a><br>
+     <div id="user-friends"></div>
+     <fb:like></fb:like>
+	</div><!-- /content -->
+	
+	<div data-role="footer">
+		<h4>Footer content</h4>
+	</div><!-- /footer -->
+	
+</div><!-- /page -->
+
+</body>
+    
+</html>
